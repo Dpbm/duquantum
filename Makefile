@@ -1,8 +1,8 @@
-FILES := statevec.cu
-OBJS := statevec.so
+SHARED_LIBRARIES := $(wildcard *.so)
+CACHE_FILES := build build.ninja CMakeFiles CMakeCache.txt $(wildcard *.cmake) $(wildcard .ninja_*)
 
-CC := nvcc
-FLAGS := --shared --cudart=shared
 
-$(OBJS): $(FILES)
-	$(CC) $(FLAGS) -o $(OBJS) $(FILES)
+.PHONY: delete
+
+delete: $(SHARED_LIBRARIES) $(CACHE_FILES)
+	rm -rf $(SHARED_LIBRARIES) $(CACHE_FILES)

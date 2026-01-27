@@ -1,5 +1,48 @@
+#pragma once
+
+#include <cstdint>
+
+#include <library_types.h> // cuda types stuff
+
+enum class Status {
+    SUCCESS                   = 0, 
+    NOT_INITIALIZED           = 1, 
+    ALLOC_FAILED              = 2, 
+    INVALID_VALUE             = 3, 
+    ARCH_MISMATCH             = 4, 
+    EXECUTION_FAILED          = 5, 
+    INTERNAL_ERROR            = 6, 
+    NOT_SUPPORTED             = 7, 
+    INSUFFICIENT_WORKSPACE    = 8, 
+    SAMPLER_NOT_PREPROCESSED  = 9, 
+    NO_DEVICE_ALLOCATOR       = 10,
+    DEVICE_ALLOCATOR_ERROR    = 11,
+    COMMUNICATOR_ERROR        = 12,
+    LOADING_LIBRARY_FAILED    = 13,
+    INVALID_CONFIGURATION     = 14,
+    ALREADY_INITIALIZED       = 15,
+    INVALID_WIRE              = 16,
+    SYSTEM_ERROR              = 17,
+    CUDA_ERROR                = 18,
+    NUMERICAL_ERROR           = 19,
+    MAX_VALUE                 = 20
+};
+using Status_t = Status;
+using Handle_t = void*; // its opaque from the custatevec headers
+
 extern "C" {
-	void custatevecAbs2SumArray(){}
+	Status_t custatevecAbs2SumArray(
+			Handle_t handle,
+			const void* sv,
+			cudaDataType_t svDataType,
+			const uint32_t nIndexBits,
+			double* abs2sum,
+			const int32_t* bitOrdering,
+			const uint32_t bitOrderingLen,
+			const int32_t* maskBitString,
+			const int32_t* maskOrdering,
+			const uint32_t maskLen
+			);
 	void custatevecAbs2SumArrayBatched(){}
 	void custatevecAbs2SumOnZBasis(){}
 	void custatevecAccessorCreate(){}
