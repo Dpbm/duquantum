@@ -6,10 +6,12 @@ CONAN_OUTPUT_DIR := conan-out/
 
 CMAKE_COMMON_FLAGS := -G Ninja -DCMAKE_TOOLCHAIN_FILE=$(CONAN_OUTPUT_DIR)/conan_toolchain.cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CUDA_COMPILER=nvcc
 
+all: conan-install build-debug
 
 .PHONY: delete conan-install
 
 delete: 
+	@echo "Deleting temp files..."
 	rm -rf $(SHARED_LIBRARIES) $(CACHE_FILES)
 
 conan-install: $(CONAN_CONFIG_FILE)
