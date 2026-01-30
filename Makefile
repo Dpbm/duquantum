@@ -21,3 +21,4 @@ conan-install: $(CONAN_CONFIG_FILE)
 build-debug:
 	@echo "Building project in Debug mode..."
 	cmake . $(CMAKE_COMMON_FLAGS) -DCMAKE_BUILD_TYPE=Debug
+	ninja
