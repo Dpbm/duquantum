@@ -327,3 +327,7 @@ CMakeUserPresets.json
 # Visual Studio files
 /.vs/
 /out/
+
+*.cmake
+*.sh
+*.json
