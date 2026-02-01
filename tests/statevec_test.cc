@@ -8,7 +8,7 @@ TEST(Statevec, StatevecAbs2SumArrayReturningValues){
 	double r[2] = {0};
 
 	EXPECT_EQ(
-			custatevecAbs2SumArray(handle, sv, CUDA_R_64F, 1, r, {0}, 1, nullptr, {0}, 1), 
+			custatevecAbs2SumArray(handle, sv, CUDA_R_64F, 2, r, {0}, 1, nullptr, {0}, 1), 
 			custatevecStatus_t::CUSTATEVEC_STATUS_INVALID_VALUE
 			);
 }
