@@ -39,6 +39,5 @@ build-debug:
 run-tests: $(BUILD_DIR)
 	@echo "------------------------------------"
 	@echo "Run tests..."
-	@cd $(BUILD_DIR)tests
-	ctest
+	cd $(BUILD_DIR)tests && echo "Current dir: $(shell pwd)" && ctest --output-on-failure
 
